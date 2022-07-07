@@ -7,7 +7,7 @@ namespace Ui
 {
     internal class SettingsMenuController : BaseController
     {
-        private readonly ResourcePath _resourcePath = new(Constants.PrefabPaths.MENU.SETTINGS);
+        private readonly ResourcePath _resourcePath = new(Constants.PrefabPaths.Menu.SETTINGS);
         private readonly ProfilePlayer _profilePlayer;
         private readonly SettingsMenuView _view;
 
@@ -15,7 +15,7 @@ namespace Ui
         {
             _profilePlayer = profilePlayer;
             _view = LoadView(placeForUi);
-            _view.Init(ReturnMenu);
+            _view.Init(ReturnToMenu);
         }
 
         private SettingsMenuView LoadView(Transform placeForUi)
@@ -27,7 +27,7 @@ namespace Ui
             return objectView.GetComponent<SettingsMenuView>();
         }
 
-        private void ReturnMenu()
+        private void ReturnToMenu()
         {
             _profilePlayer.CurrentState.Value = GameState.Start;
         }

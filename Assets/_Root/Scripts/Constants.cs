@@ -1,4 +1,4 @@
-internal struct Constants
+static class Constants
 {
     public struct Variables
     {
@@ -13,7 +13,7 @@ internal struct Constants
             public const string ACCELERATION_INPUT = "Prefabs/EndlessMoveAccelerationInput";
         }
 
-        public struct MENU
+        public struct Menu
         {
             public const string MAIN = "Prefabs/MainMenu";
             public const string SETTINGS = "Prefabs/SettingsMenu";

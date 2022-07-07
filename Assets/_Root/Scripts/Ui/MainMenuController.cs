@@ -7,7 +7,7 @@ namespace Ui
 {
     internal class MainMenuController : BaseController
     {
-        private readonly ResourcePath _resourcePath = new(Constants.PrefabPaths.MENU.MAIN);
+        private readonly ResourcePath _resourcePath = new(Constants.PrefabPaths.Menu.MAIN);
         private readonly ProfilePlayer _profilePlayer;
         private readonly MainMenuView _view;
 
