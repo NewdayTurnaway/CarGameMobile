@@ -3,18 +3,16 @@ using UnityEngine;
 
 internal class EntryPoint : MonoBehaviour
 {
-    private const float SpeedCar = 15f;
-    private const GameState InitialState = GameState.Start;
+    private const GameState INITIAL_STATE = GameState.Start;
 
     [SerializeField] private Transform _placeForUi;
 
     private MainController _mainController;
 
-
     private void Start()
     {
-        var profilePlayer = new ProfilePlayer(SpeedCar, InitialState);
-        _mainController = new MainController(_placeForUi, profilePlayer);
+        ProfilePlayer profilePlayer = new(Constants.Variables.SPEED_CAR, INITIAL_STATE);
+        _mainController = new(_placeForUi, profilePlayer);
     }
 
     private void OnDestroy()
