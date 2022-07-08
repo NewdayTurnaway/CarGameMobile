@@ -3,7 +3,7 @@ using Game;
 using Profile;
 using UnityEngine;
 
-internal class MainController : BaseController
+internal sealed class MainController : BaseController
 {
     private readonly Transform _placeForUi;
     private readonly ProfilePlayer _profilePlayer;

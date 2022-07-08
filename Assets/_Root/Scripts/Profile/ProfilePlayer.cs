@@ -3,7 +3,7 @@ using Tool;
 
 namespace Profile
 {
-    internal class ProfilePlayer
+    internal sealed class ProfilePlayer
     {
         public readonly SubscriptionProperty<GameState> CurrentState;
         public readonly CarModel CurrentCar;

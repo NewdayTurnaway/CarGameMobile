@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Game.TapeBackground
 {
     [RequireComponent(typeof(SpriteRenderer))]
-    internal class Background : MonoBehaviour
+    internal sealed class Background : MonoBehaviour
     {
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private float _relativeSpeedRate;
@@ -28,7 +28,7 @@ namespace Game.TapeBackground
         public void Move(float value)
         {
             Vector3 position = transform.position;
-            position += Vector3.right * value * _relativeSpeedRate;
+            position += _relativeSpeedRate * value * Vector3.right;
 
             if (position.x <= LeftBorder)
                 position.x = RightBorder - (LeftBorder - position.x);

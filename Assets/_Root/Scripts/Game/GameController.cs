@@ -3,13 +3,16 @@ using Game.InputLogic;
 using Game.TapeBackground;
 using Profile;
 using Tool;
+using Services.Analytics;
 
 namespace Game
 {
-    internal class GameController : BaseController
+    internal sealed class GameController : BaseController
     {
         public GameController(ProfilePlayer profilePlayer)
         {
+            AnalyticsManager.Instance.SendGameStarted();
+
             var leftMoveDiff = new SubscriptionProperty<float>();
             var rightMoveDiff = new SubscriptionProperty<float>();
 

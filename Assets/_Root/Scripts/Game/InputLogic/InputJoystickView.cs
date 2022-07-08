@@ -4,7 +4,7 @@ using UnityStandardAssets.CrossPlatformInput;
 
 namespace Game.InputLogic
 {
-    internal class InputJoystickView : BaseInputView
+    internal sealed class InputJoystickView : BaseInputView
     {
         [SerializeField] private float _inputMultiplier = 10;
 

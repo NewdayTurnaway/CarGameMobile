@@ -5,7 +5,7 @@ using Object = UnityEngine.Object;
 
 namespace Ui
 {
-    internal class SettingsMenuController : BaseController
+    internal sealed class SettingsMenuController : BaseController
     {
         private readonly ResourcePath _resourcePath = new(Constants.PrefabPaths.Menu.SETTINGS);
         private readonly ProfilePlayer _profilePlayer;

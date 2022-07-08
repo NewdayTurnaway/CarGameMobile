@@ -9,5 +9,8 @@ namespace Tool
 
         public static GameObject LoadPrefab(ResourcePath path) =>
             Resources.Load<GameObject>(path.PathResource);
+
+        public static T Load<T>(ResourcePath path) where T : Object =>
+            Resources.Load<T>(path.PathResource);
     }
 }

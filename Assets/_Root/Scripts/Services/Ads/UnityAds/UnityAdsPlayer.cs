@@ -1,4 +1,5 @@
 using System;
+using Tool;
 using UnityEngine;
 using UnityEngine.Advertisements;
 
@@ -38,19 +39,19 @@ namespace Services.Ads.UnityAds
             if (IsIdMy(placementId) == false)
                 return;
 
-            Log("Ready");
+            this.Log("Ready");
             BecomeReady?.Invoke();
         }
 
         void IUnityAdsListener.OnUnityAdsDidError(string message) =>
-            Error($"Error: {message}");
+            this.Error($"Error: {message}");
 
         void IUnityAdsListener.OnUnityAdsDidStart(string placementId)
         {
             if (IsIdMy(placementId) == false)
                 return;
 
-            Log("Started");
+            this.Log("Started");
             Started?.Invoke();
         }
 
@@ -62,17 +63,17 @@ namespace Services.Ads.UnityAds
             switch (showResult)
             {
                 case ShowResult.Finished:
-                    Log("Finished");
+                    this.Log("Finished");
                     Finished?.Invoke();
                     break;
 
                 case ShowResult.Failed:
-                    Error("Failed");
+                    this.Error("Failed");
                     Failed?.Invoke();
                     break;
 
                 case ShowResult.Skipped:
-                    Log("Skipped");
+                    this.Log("Skipped");
                     Skipped?.Invoke();
                     break;
             }
@@ -80,9 +81,5 @@ namespace Services.Ads.UnityAds
 
 
         private bool IsIdMy(string id) => Id == id;
-
-        private void Log(string message) => Debug.Log(WrapMessage(message));
-        private void Error(string message) => Debug.LogError(WrapMessage(message));
-        private string WrapMessage(string message) => $"[{GetType().Name}] {message}";
     }
 }

@@ -1,11 +1,13 @@
 using Profile;
+using Services.IAP;
+using Services.Ads.UnityAds;
 using Tool;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace Ui
 {
-    internal class MainMenuController : BaseController
+    internal sealed class MainMenuController : BaseController
     {
         private readonly ResourcePath _resourcePath = new(Constants.PrefabPaths.Menu.MAIN);
         private readonly ProfilePlayer _profilePlayer;
@@ -15,7 +17,9 @@ namespace Ui
         {
             _profilePlayer = profilePlayer;
             _view = LoadView(placeForUi);
-            _view.Init(StartGame, Settings);
+            _view.Init(StartGame, Settings, RewardedAd, BuyItem);
+            UnityAdsService.Instance.Initialized.AddListener(RewardedAd);
+            IAPService.Instance.Initialized.AddListener(BuyItem);
         }
 
         private MainMenuView LoadView(Transform placeForUi)
@@ -27,14 +31,22 @@ namespace Ui
             return objectView.GetComponent<MainMenuView>();
         }
 
-        private void StartGame()
+        protected override void OnDispose()
         {
-            _profilePlayer.CurrentState.Value = GameState.Game;
+            UnityAdsService.Value.Initialized.RemoveListener(RewardedAd);
+            IAPService.Value.Initialized.RemoveListener(BuyItem);
         }
 
-        private void Settings()
-        {
+        private void StartGame() => 
+            _profilePlayer.CurrentState.Value = GameState.Game;
+
+        private void Settings() => 
             _profilePlayer.CurrentState.Value = GameState.Settings;
-        }
+
+        private void RewardedAd() => 
+            UnityAdsService.Instance.RewardedPlayer.Play();
+
+        private void BuyItem() =>
+            IAPService.Instance.Buy(Constants.Names.Iap.PRODUCT_2);
     }
 }

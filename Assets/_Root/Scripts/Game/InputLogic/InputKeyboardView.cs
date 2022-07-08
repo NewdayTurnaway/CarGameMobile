@@ -3,7 +3,7 @@ using JoostenProductions;
 
 namespace Game.InputLogic
 {
-    internal class InputKeyboardView : BaseInputView
+    internal sealed class InputKeyboardView : BaseInputView
     {
         [SerializeField] private float _inputMultiplier = 10;
 

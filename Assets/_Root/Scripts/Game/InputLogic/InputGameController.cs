@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Game.InputLogic
 {
-    internal class InputGameController : BaseController
+    internal sealed class InputGameController : BaseController
     {
         private readonly ResourcePath _resourcePath = new(Constants.PrefabPaths.EndlessMove.KEYBOARD_INPUT);
         private readonly BaseInputView _view;

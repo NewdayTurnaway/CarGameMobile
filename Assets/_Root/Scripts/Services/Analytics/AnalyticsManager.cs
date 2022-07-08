@@ -1,24 +1,40 @@
-using UnityEngine;
 using Services.Analytics.UnityAnalytics;
 using System.Collections.Generic;
+using Tool;
 
 namespace Services.Analytics
 {
-    internal class AnalyticsManager : MonoBehaviour
+    internal sealed class AnalyticsManager : SingletoneMonoBehaviour<AnalyticsManager>
     {
         private IAnalyticsService[] _services;
 
-
-        private void Awake() =>
+        protected override void Init()
+        {
             _services = new IAnalyticsService[]
             {
                 new UnityAnalyticsService()
             };
+        }
 
+        public void SendMainMenuOpened()
+        {
+            string message = nameof(SendMainMenuOpened);
+            SendEvent(message);
+            this.Log(message);
+        }
 
-        public void SendMainMenuOpened() =>
-            SendEvent("MainMenuOpened");
+        public void SendGameStarted()
+        {
+            string message = nameof(SendGameStarted);
+            SendEvent(message);
+            this.Log(message);
+        }
 
+        public void SendPurchaseSucceed(string productId, decimal amount, string currency)
+        {
+            Transaction(productId, amount, currency);
+            this.Log($"{nameof(SendPurchaseSucceed)} | {productId} | {amount} | {currency}");
+        }
 
         private void SendEvent(string eventName)
         {
@@ -30,6 +46,12 @@ namespace Services.Analytics
         {
             for (int i = 0; i < _services.Length; i++)
                 _services[i].SendEvent(eventName, eventData);
+        }
+
+        private void Transaction(string productId, decimal amount, string currency)
+        {
+            for (int i = 0; i < _services.Length; i++)
+                _services[i].Transaction(productId, amount, currency);
         }
     }
 }

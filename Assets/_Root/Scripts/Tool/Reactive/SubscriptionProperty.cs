@@ -2,7 +2,7 @@ using System;
 
 namespace Tool
 {
-    internal class SubscriptionProperty<TValue> : ISubscriptionProperty<TValue>
+    internal sealed class SubscriptionProperty<TValue> : ISubscriptionProperty<TValue>
     {
         private TValue _value;
         private Action<TValue> _onChangeValue;

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Tool
 {
-    internal class DontDestroyOnLoadObject : MonoBehaviour
+    internal sealed class DontDestroyOnLoadObject : MonoBehaviour
     {
         private void Awake()
         {
