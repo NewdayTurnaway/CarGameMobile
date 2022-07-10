@@ -1,6 +1,6 @@
 namespace Game.Car
 {
-    internal class CarModel
+    internal sealed class CarModel
     {
         public readonly float Speed;
 

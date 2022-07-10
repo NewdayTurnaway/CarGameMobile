@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Game.Car
 {
-    internal class CarView : MonoBehaviour
+    internal sealed class CarView : MonoBehaviour
     {
 
     }

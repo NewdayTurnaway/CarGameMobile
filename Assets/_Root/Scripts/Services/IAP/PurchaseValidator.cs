@@ -1,10 +1,10 @@
-using UnityEngine;
 using UnityEngine.Purchasing;
 using UnityEngine.Purchasing.Security;
+using Tool;
 
 namespace Services.IAP
 {
-    internal class PurchaseValidator
+    internal sealed class PurchaseValidator
     {
         public bool Validate(PurchaseEventArgs args)
         {
@@ -29,12 +29,8 @@ namespace Services.IAP
                 $"Receipt is valid. Contents: {args.purchasedProduct.receipt}" :
                 "Invalid receipt, not unlocking content";
 
-            Log(logMessage);
+            this.Log(logMessage);
             return isValid;
         }
-
-
-        private void Log(string message) =>
-            Debug.Log($"[{GetType().Name}] {message}");
     }
 }

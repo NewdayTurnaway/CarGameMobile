@@ -1,6 +1,6 @@
 namespace Services.Ads.UnityAds
 {
-    internal class StubPlayer : UnityAdsPlayer
+    internal sealed class StubPlayer : UnityAdsPlayer
     {
         public StubPlayer(string id) : base(id) { }
 

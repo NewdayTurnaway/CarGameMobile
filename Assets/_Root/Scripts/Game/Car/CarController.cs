@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game.Car
 {
-    internal class CarController : BaseController
+    internal sealed class CarController : BaseController
     {
         private readonly ResourcePath _viewPath = new(Constants.PrefabPaths.CAR);
         private readonly CarView _view;

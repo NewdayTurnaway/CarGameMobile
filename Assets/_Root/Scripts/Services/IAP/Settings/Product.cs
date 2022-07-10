@@ -5,7 +5,7 @@ using UnityEngine.Purchasing;
 namespace Services.IAP
 {
     [Serializable]
-    internal class Product
+    internal sealed class Product
     {
         [field: SerializeField] public string Id { get; private set; }
         [field: SerializeField] public ProductType ProductType { get; private set; }

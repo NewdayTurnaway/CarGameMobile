@@ -1,9 +1,10 @@
+using Tool;
 using UnityEngine;
 using UnityEngine.Purchasing;
 
 namespace Services.IAP
 {
-    internal class PurchaseRestorer
+    internal sealed class PurchaseRestorer
     {
         private readonly IExtensionProvider _extensionProvider;
 
@@ -14,7 +15,7 @@ namespace Services.IAP
 
         public void Restore()
         {
-            Log("RestorePurchases started ...");
+            this.Log("RestorePurchases started ...");
 
             switch (Application.platform)
             {
@@ -28,16 +29,13 @@ namespace Services.IAP
                     break;
 
                 default:
-                    Log("RestorePurchases FAIL. Not supported on this platform. Current = " + Application.platform);
+                    this.Log("RestorePurchases FAIL. Not supported on this platform. Current = " + Application.platform);
                     break;
             }
         }
 
         private void OnRestoredTransactions(bool result) =>
-            Log("RestorePurchases continuing: " + result +
+            this.Log("RestorePurchases continuing: " + result +
                 ". If no further messages, no purchases available to restore.");
-
-        private void Log(string message) =>
-            Debug.Log($"[{GetType().Name}] {message}");
     }
 }

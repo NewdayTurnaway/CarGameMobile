@@ -1,10 +1,12 @@
+using Services.Analytics;
+using Tool;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Purchasing;
 
 namespace Services.IAP
 {
-    internal class IAPService : MonoBehaviour, IStoreListener, IIAPService
+    internal sealed class IAPService : SingletoneMonoBehaviour<IAPService>, IStoreListener, IIAPService
     {
         [Header("Components")]
         [SerializeField] private ProductLibrary _productLibrary;
@@ -20,9 +22,20 @@ namespace Services.IAP
         private PurchaseRestorer _purchaseRestorer;
         private IStoreController _controller;
 
+        private void OnValidate()
+        {
+            _productLibrary ??= _productLibrary = ResourcesLoader.Load<ProductLibrary>(new ResourcePath(Constants.Settings.Iap.UNITY_IAP));
+        }
 
-        private void Awake() =>
+        protected override void Init()
+        {
+            _productLibrary ??= _productLibrary = ResourcesLoader.Load<ProductLibrary>(new ResourcePath(Constants.Settings.Iap.UNITY_IAP));
+            Initialized = new();
+            PurchaseSucceed = new();
+            PurchaseFailed = new();
+
             InitializeProducts();
+        }
 
         private void InitializeProducts()
         {
@@ -32,7 +45,7 @@ namespace Services.IAP
             foreach (Product product in _productLibrary.Products)
                 builder.AddProduct(product.Id, product.ProductType);
 
-            Log("Products initialized");
+            this.Log("Products initialized");
             UnityPurchasing.Initialize(this, builder);
         }
 
@@ -45,22 +58,27 @@ namespace Services.IAP
             _purchaseValidator = new PurchaseValidator();
             _purchaseRestorer = new PurchaseRestorer(_extensionProvider);
 
-            Log("Initialized");
+            this.Log("Initialized");
             Initialized?.Invoke();
         }
 
         void IStoreListener.OnInitializeFailed(InitializationFailureReason error)
         {
             IsInitialized = false;
-            Error("Initialization Failed");
+            this.Error("Initialization Failed");
         }
 
         PurchaseProcessingResult IStoreListener.ProcessPurchase(PurchaseEventArgs args)
         {
+            UnityEngine.Purchasing.Product product = args.purchasedProduct;
             if (_purchaseValidator.Validate(args))
+            {
                 PurchaseSucceed.Invoke();
+                AnalyticsManager.Instance.SendPurchaseSucceed(product.definition.id,
+                    product.metadata.localizedPrice, product.metadata.localizedPriceString);
+            }
             else
-                OnPurchaseFailed(args.purchasedProduct.definition.id, "NonValid");
+                OnPurchaseFailed(product.definition.id, "NonValid");
 
             return PurchaseProcessingResult.Complete;
         }
@@ -70,7 +88,7 @@ namespace Services.IAP
 
         private void OnPurchaseFailed(string productId, string reason)
         {
-            Error($"Failed {productId}: {reason}");
+            this.Error($"Failed {productId}: {reason}");
             PurchaseFailed?.Invoke();
         }
 
@@ -80,7 +98,7 @@ namespace Services.IAP
             if (IsInitialized)
                 _controller.InitiatePurchase(id);
             else
-                Error($"Buy {id} FAIL. Not initialized.");
+                this.Error($"Buy {id} FAIL. Not initialized.");
         }
 
         public string GetCost(string productID)
@@ -94,12 +112,7 @@ namespace Services.IAP
             if (IsInitialized)
                 _purchaseRestorer.Restore();
             else
-                Error("RestorePurchases FAIL. Not initialized.");
+                this.Error("RestorePurchases FAIL. Not initialized.");
         }
-
-
-        private void Log(string message) => Debug.Log(WrapMessage(message));
-        private void Error(string message) => Debug.LogError(WrapMessage(message));
-        private string WrapMessage(string message) => $"[{GetType().Name}] {message}";
     }
 }
