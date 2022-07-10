@@ -17,7 +17,7 @@ namespace Ui
         {
             _profilePlayer = profilePlayer;
             _view = LoadView(placeForUi);
-            _view.Init(StartGame, Settings, RewardedAd, BuyItem);
+            _view.Init(StartGame, OpenShed, Settings, RewardedAd, BuyItem);
             UnityAdsService.Instance.Initialized.AddListener(RewardedAd);
             IAPService.Instance.Initialized.AddListener(BuyItem);
         }
@@ -39,6 +39,9 @@ namespace Ui
 
         private void StartGame() => 
             _profilePlayer.CurrentState.Value = GameState.Game;
+
+        private void OpenShed() =>
+            _profilePlayer.CurrentState.Value = GameState.Shed;
 
         private void Settings() => 
             _profilePlayer.CurrentState.Value = GameState.Settings;

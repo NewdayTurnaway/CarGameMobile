@@ -1,9 +1,10 @@
+using Features.AbilitySystem;
 using Tool;
 using UnityEngine;
 
 namespace Game.Car
 {
-    internal sealed class CarController : BaseController
+    internal sealed class CarController : BaseController, IAbilityActivator
     {
         private readonly ResourcePath _viewPath = new(Constants.PrefabPaths.CAR);
         private readonly CarView _view;
