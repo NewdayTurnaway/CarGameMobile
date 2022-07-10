@@ -18,6 +18,8 @@ namespace Ui
             _profilePlayer = profilePlayer;
             _view = LoadView(placeForUi);
             _view.Init(StartGame, OpenShed, Settings, RewardedAd, BuyItem);
+            UnityAdsService.Instance.Initialized.AddListener(RewardedAd);
+            IAPService.Instance.Initialized.AddListener(BuyItem);
         }
 
         private MainMenuView LoadView(Transform placeForUi)

@@ -7,7 +7,8 @@ namespace Features.AbilitySystem.Abilities
 {
     internal sealed class GunAbility : IAbility
     {
-        private const float yOffset = 1.5f;
+        private const float Y_OFFSET = 1.5f;
+
         private readonly AbilityItemConfig _config;
 
 
@@ -21,7 +22,7 @@ namespace Features.AbilitySystem.Abilities
             Rigidbody2D projectileRigidbody = projectile.GetComponent<Rigidbody2D>();
             
             Vector3 viewPosition = activator.BodyRigidbody.transform.position;
-            projectile.transform.position = new(viewPosition.x, viewPosition.y + yOffset, viewPosition.z);
+            projectile.transform.position = new(viewPosition.x, viewPosition.y + Y_OFFSET, viewPosition.z);
             
             Vector3 force = activator.ViewGameObject.transform.right * _config.Value;
             projectileRigidbody.AddForce(force, ForceMode2D.Force);
