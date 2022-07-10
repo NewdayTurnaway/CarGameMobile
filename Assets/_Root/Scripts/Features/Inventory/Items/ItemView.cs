@@ -10,7 +10,7 @@ namespace Features.Inventory.Items
         void Init(IItem item, UnityAction clickAction);
     }
 
-    internal class ItemView : MonoBehaviour, IItemView
+    internal sealed class ItemView : MonoBehaviour, IItemView
     {
         [SerializeField] private Image _icon;
         [SerializeField] private TMP_Text _text;

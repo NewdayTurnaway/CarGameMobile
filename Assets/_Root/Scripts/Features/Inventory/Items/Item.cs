@@ -8,7 +8,7 @@ namespace Features.Inventory.Items
         ItemInfo Info { get; }
     }
 
-    internal class Item : IItem
+    internal sealed class Item : IItem
     {
         public string Id { get; }
         public ItemInfo Info { get; }

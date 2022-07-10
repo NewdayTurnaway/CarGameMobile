@@ -1,6 +1,6 @@
 namespace Features.Shed.Upgrade
 {
-    internal class StubUpgradeHandler : IUpgradeHandler
+    internal sealed class StubUpgradeHandler : IUpgradeHandler
     {
         public static readonly IUpgradeHandler Default = new StubUpgradeHandler();
 

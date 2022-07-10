@@ -9,7 +9,7 @@ namespace Features.AbilitySystem
     internal interface IAbilitiesController
     { }
 
-    internal class AbilitiesController : BaseController
+    internal sealed class AbilitiesController : BaseController
     {
         private readonly ResourcePath _viewPath = new(Constants.PrefabPaths.Ui.ABILITIES);
         private readonly ResourcePath _dataSourcePath = new(Constants.Configs.ABILITY_ITEM);

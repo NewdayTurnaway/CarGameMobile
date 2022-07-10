@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: AbilityItemConfigDataSource
   m_EditorClassIdentifier: 
   _abilityConfigs:
+  - {fileID: 11400000, guid: 50e2ecd2a87bce948adb272cb61d30ee, type: 2}
   - {fileID: 11400000, guid: 50468f62abfe5414cbb0cbe1092156a2, type: 2}

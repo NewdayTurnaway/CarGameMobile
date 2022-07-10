@@ -15,7 +15,7 @@ namespace Game.InputLogic
 
         private void Move()
         {
-            float axisOffset = Input.GetAxis("Horizontal");
+            float axisOffset = Input.GetAxis(Constants.Inputs.HORIZONTAL);
             float moveValue = _inputMultiplier * Time.deltaTime * axisOffset;
 
             float abs = Mathf.Abs(moveValue);

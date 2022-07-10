@@ -1,5 +1,10 @@
 static class Constants
 {
+    public struct Inputs
+    {
+        public const string HORIZONTAL = "Horizontal";
+    }
+
     public struct Names
     {
         public struct Iap
@@ -14,6 +19,7 @@ static class Constants
     public struct Variables
     {
         public const float SPEED_CAR = 15f;
+        public const float JUMP_HEIGHT = 10f;
     }
 
     public struct PrefabPaths

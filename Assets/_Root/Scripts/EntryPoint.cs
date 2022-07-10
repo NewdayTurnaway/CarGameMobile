@@ -14,7 +14,7 @@ internal sealed class EntryPoint : MonoBehaviour
 
     private void Start()
     {
-        ProfilePlayer profilePlayer = new(Constants.Variables.SPEED_CAR, INITIAL_STATE);
+        ProfilePlayer profilePlayer = new(Constants.Variables.SPEED_CAR, Constants.Variables.JUMP_HEIGHT, INITIAL_STATE);
         _mainController = new(_placeForUi, profilePlayer);
 
         AnalyticsManager.Instance.MainMenuOpened();

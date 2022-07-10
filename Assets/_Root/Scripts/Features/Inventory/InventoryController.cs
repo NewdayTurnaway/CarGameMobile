@@ -11,7 +11,7 @@ namespace Features.Inventory
     {
     }
 
-    internal class InventoryController : BaseController, IInventoryController
+    internal sealed class InventoryController : BaseController, IInventoryController
     {
         private readonly ResourcePath _viewPath = new(Constants.PrefabPaths.Ui.INVENTORY);
         private readonly ResourcePath _dataSourcePath = new(Constants.Configs.ITEM);

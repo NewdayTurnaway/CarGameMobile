@@ -26,7 +26,7 @@ namespace Game
             _leftMoveDiff = new();
             _rightMoveDiff = new();
 
-            _carController = CreateCarController();
+            _carController = CreateCarController(profilePlayer.CurrentCar);
             _inputGameController = CreateInputGameController(profilePlayer, _leftMoveDiff, _rightMoveDiff);
             _abilitiesController = CreateAbilitiesController(placeForUi, _carController);
             _tapeBackgroundController = CreateTapeBackground(_leftMoveDiff, _rightMoveDiff);
@@ -49,9 +49,9 @@ namespace Game
             return inputGameController;
         }
 
-        private CarController CreateCarController()
+        private CarController CreateCarController(CarModel carModel)
         {
-            CarController carController = new();
+            CarController carController = new(carModel);
             AddController(carController);
 
             return carController;

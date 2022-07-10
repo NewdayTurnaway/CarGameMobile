@@ -11,7 +11,7 @@ namespace Features.AbilitySystem
         void Clear();
     }
 
-    internal class AbilitiesView : MonoBehaviour, IAbilitiesView
+    internal sealed class AbilitiesView : MonoBehaviour, IAbilitiesView
     {
         [SerializeField] private GameObject _abilityButtonPrefab;
         [SerializeField] private Transform _placeForButtons;

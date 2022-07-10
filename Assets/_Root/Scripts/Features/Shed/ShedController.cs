@@ -13,7 +13,7 @@ namespace Features.Shed
     {
     }
 
-    internal class ShedController : BaseController, IShedController
+    internal sealed class ShedController : BaseController, IShedController
     {
         private readonly ResourcePath _viewPath = new(Constants.PrefabPaths.Ui.SHED);
         private readonly ResourcePath _dataSourcePath = new(Constants.Configs.UPGRADE_ITEM);
@@ -79,13 +79,13 @@ namespace Features.Shed
                 _upgradeHandlersRepository.Items);
 
             _profilePlayer.CurrentState.Value = GameState.Start;
-            this.Log($"Apply. Current Speed: {_profilePlayer.CurrentCar.Speed}");
+            this.Log($"Apply. Current: Speed {_profilePlayer.CurrentCar.Speed} | JumpHeight {_profilePlayer.CurrentCar.JumpHeight}");
         }
 
         private void Back()
         {
             _profilePlayer.CurrentState.Value = GameState.Start;
-            this.Log($"Back. Current Speed: {_profilePlayer.CurrentCar.Speed}");
+            this.Log($"Back. Current: Speed {_profilePlayer.CurrentCar.Speed} | JumpHeight {_profilePlayer.CurrentCar.JumpHeight}");
         }
 
 

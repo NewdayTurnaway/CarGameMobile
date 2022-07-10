@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6118ce1540d041a4a9adc89d27299e04, type: 3}
-  m_Name: Brake
+  m_Name: Bomb
   m_EditorClassIdentifier: 
-  <Id>k__BackingField: brake
-  <Title>k__BackingField: Brake
-  <Icon>k__BackingField: {fileID: 21300000, guid: 5b1a64ea234fb2343b8d0686c51280de, type: 3}
+  <Id>k__BackingField: bomb
+  <Title>k__BackingField: Bomb
+  <Icon>k__BackingField: {fileID: 21300000, guid: 23f2dcab7a131324d922cfb2bd07db80, type: 3}

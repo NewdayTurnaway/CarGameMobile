@@ -4,7 +4,7 @@ using Features.Inventory.Items;
 namespace Features.Shed.Upgrade
 {
     [CreateAssetMenu(fileName = nameof(UpgradeItemConfig), menuName = "Configs/" + nameof(UpgradeItemConfig))]
-    internal class UpgradeItemConfig : ScriptableObject
+    internal sealed class UpgradeItemConfig : ScriptableObject
     {
         [SerializeField] private ItemConfig _itemConfig;
         [field: SerializeField] public UpgradeType Type { get; private set; }

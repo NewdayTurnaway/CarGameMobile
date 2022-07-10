@@ -8,7 +8,7 @@ namespace Features.AbilitySystem
         IReadOnlyDictionary<string, IAbility> Items { get; }
     }
 
-    internal class AbilitiesRepository : BaseRepository<string, IAbility, AbilityItemConfig>
+    internal sealed class AbilitiesRepository : BaseRepository<string, IAbility, AbilityItemConfig>
     {
         public AbilitiesRepository(IEnumerable<AbilityItemConfig> configs) : base(configs)
         { }
@@ -19,6 +19,7 @@ namespace Features.AbilitySystem
             config.Type switch
             {
                 AbilityType.Gun => new GunAbility(config),
+                AbilityType.Movement => new JumpAbility(config),
                 _ => StubAbility.Default
             };
     }

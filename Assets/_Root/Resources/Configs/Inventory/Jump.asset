@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6118ce1540d041a4a9adc89d27299e04, type: 3}
-  m_Name: Brake
+  m_Name: Jump
   m_EditorClassIdentifier: 
-  <Id>k__BackingField: brake
-  <Title>k__BackingField: Brake
-  <Icon>k__BackingField: {fileID: 21300000, guid: 5b1a64ea234fb2343b8d0686c51280de, type: 3}
+  <Id>k__BackingField: jump
+  <Title>k__BackingField: Jump Height
+  <Icon>k__BackingField: {fileID: 21300000, guid: eb5f6e2757c821940b69cf1456f7865a, type: 3}

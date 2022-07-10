@@ -13,7 +13,7 @@ namespace Features.AbilitySystem.Abilities
     }
 
     [CreateAssetMenu(fileName = nameof(AbilityItemConfig), menuName = "Configs/" + nameof(AbilityItemConfig))]
-    internal class AbilityItemConfig : ScriptableObject, IAbilityItem
+    internal sealed class AbilityItemConfig : ScriptableObject, IAbilityItem
     {
         [SerializeField] private ItemConfig _itemConfig;
         [field: SerializeField] public AbilityType Type { get; private set; }
