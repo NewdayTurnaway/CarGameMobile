@@ -18,8 +18,6 @@ namespace Ui
             _profilePlayer = profilePlayer;
             _view = LoadView(placeForUi);
             _view.Init(StartGame, OpenShed, Settings, RewardedAd, BuyItem);
-            UnityAdsService.Instance.Initialized.AddListener(RewardedAd);
-            IAPService.Instance.Initialized.AddListener(BuyItem);
         }
 
         private MainMenuView LoadView(Transform placeForUi)
@@ -29,12 +27,6 @@ namespace Ui
             AddGameObject(objectView);
 
             return objectView.GetComponent<MainMenuView>();
-        }
-
-        protected override void OnDispose()
-        {
-            UnityAdsService.Value.Initialized.RemoveListener(RewardedAd);
-            IAPService.Value.Initialized.RemoveListener(BuyItem);
         }
 
         private void StartGame() => 

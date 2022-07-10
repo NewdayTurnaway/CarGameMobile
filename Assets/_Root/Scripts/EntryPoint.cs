@@ -17,7 +17,7 @@ internal sealed class EntryPoint : MonoBehaviour
         ProfilePlayer profilePlayer = new(Constants.Variables.SPEED_CAR, INITIAL_STATE);
         _mainController = new(_placeForUi, profilePlayer);
 
-        AnalyticsManager.Instance.SendMainMenuOpened();
+        AnalyticsManager.Instance.MainMenuOpened();
 
         if (UnityAdsService.Instance.IsInitialized)
             OnAdsInitialized();

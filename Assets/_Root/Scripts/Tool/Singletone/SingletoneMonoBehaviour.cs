@@ -7,66 +7,61 @@ namespace Tool
         private static T _instance;
 
         private static bool _exist = true;
-        private static readonly object _lock = new();
 
         public static T Instance
         {
             get
             {
-                lock (_lock)
+                if (_instance != null)
+                    return _instance;
+
+                T[] instances = FindObjectsOfType<T>();
+
+                if (instances != null)
                 {
-                    if (_instance != null)
-                        return _instance;
-
-                    T[] instances = FindObjectsOfType<T>();
-
-                    if (instances != null)
+                    if (instances.Length == 1)
                     {
-                        if (instances.Length == 1)
-                        {
-                            _instance = instances[0];
-                            DontDestroyOnLoad(_instance);
+                        _instance = instances[0];
+                        DontDestroyOnLoad(_instance);
 
-                            return _instance;
-                        }
-
-                        if(instances.Length > 1)
-                        {
-                            for (int i = 0; i < instances.Length; ++i)
-                            {
-                                T tempInstance = instances[i];
-                                Destroy(tempInstance);
-                            }
-                        }
+                        return _instance;
                     }
 
-                    GameObject newGameObject = new(typeof(T).Name, typeof(T));
-                    _instance = newGameObject.GetComponent<T>();
-                    DontDestroyOnLoad(_instance);
-                    return _instance;
+                    DestroyInstances(instances);
+                }
+
+                CreateObject();
+                return _instance;
+            }
+        }
+
+        private static void DestroyInstances(T[] instances)
+        {
+            if (instances.Length > 1)
+            {
+                for (int i = 0; i < instances.Length; ++i)
+                {
+                    T tempInstance = instances[i];
+                    Destroy(tempInstance);
                 }
             }
         }
 
-        public static T Value { get { return _instance; } }
-
-        public static bool IsExist
+        private static void CreateObject()
         {
-            get
-            {
-                if (_instance == null)
-                    return false;
-
-                return _exist;
-            }
+            GameObject newGameObject = new(typeof(T).Name, typeof(T));
+            _instance = newGameObject.GetComponent<T>();
+            DontDestroyOnLoad(_instance);
         }
+
+        public static T Value { get { return _instance; } }
 
         private void OnEnable()
         {
-            this.Log($"IsExist: {IsExist}");
+            this.Log($"IsExist: {_exist}");
         }
 
-        protected void Awake()
+        private void Awake()
         {
             if (_instance != null)
             {
@@ -80,10 +75,10 @@ namespace Tool
 
         protected virtual void Init() { }
 
-        protected void OnDestroy() => 
+        private void OnDestroy() => 
             _exist = false;
 
-        protected void OnApplicationQuit() => 
+        private void OnApplicationQuit() => 
             _exist = false;
     } 
 }

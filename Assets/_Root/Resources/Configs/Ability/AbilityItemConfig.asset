@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemConfig: {fileID: 11400000, guid: b597b6b04f8d34d0bb36337f81f45ec0, type: 2}
   <Type>k__BackingField: 1
-  <Projectile>k__BackingField: {fileID: 4053592497838757858, guid: 44eb27282cac35e4bbc56d3fd9cc795e, type: 3}
+  <Projectile>k__BackingField: {fileID: 4053592497838757858, guid: 276aaf504190e0e4eaab91a6888fc238, type: 3}
   <Value>k__BackingField: 500

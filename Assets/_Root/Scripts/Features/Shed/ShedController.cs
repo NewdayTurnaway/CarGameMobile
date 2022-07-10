@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Features.Inventory;
 using Features.Shed.Upgrade;
-using JetBrains.Annotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Features.Shed
 {
@@ -15,8 +15,8 @@ namespace Features.Shed
 
     internal class ShedController : BaseController, IShedController
     {
-        private readonly ResourcePath _viewPath = new ResourcePath("Prefabs/Shed/ShedView");
-        private readonly ResourcePath _dataSourcePath = new ResourcePath("Configs/Shed/UpgradeItemConfigDataSource");
+        private readonly ResourcePath _viewPath = new(Constants.PrefabPaths.Ui.SHED);
+        private readonly ResourcePath _dataSourcePath = new(Constants.Configs.UPGRADE_ITEM);
 
         private readonly ShedView _view;
         private readonly ProfilePlayer _profilePlayer;
@@ -45,7 +45,7 @@ namespace Features.Shed
         private UpgradeHandlersRepository CreateRepository()
         {
             UpgradeItemConfig[] upgradeConfigs = ContentDataSourceLoader.LoadUpgradeItemConfigs(_dataSourcePath);
-            var repository = new UpgradeHandlersRepository(upgradeConfigs);
+            UpgradeHandlersRepository repository = new(upgradeConfigs);
             AddRepository(repository);
 
             return repository;
@@ -53,7 +53,7 @@ namespace Features.Shed
 
         private InventoryController CreateInventoryController(Transform placeForUi)
         {
-            var inventoryController = new InventoryController(placeForUi, _profilePlayer.Inventory);
+            InventoryController inventoryController = new(placeForUi, _profilePlayer.Inventory);
             AddController(inventoryController);
 
             return inventoryController;
@@ -79,13 +79,13 @@ namespace Features.Shed
                 _upgradeHandlersRepository.Items);
 
             _profilePlayer.CurrentState.Value = GameState.Start;
-            Log($"Apply. Current Speed: {_profilePlayer.CurrentCar.Speed}");
+            this.Log($"Apply. Current Speed: {_profilePlayer.CurrentCar.Speed}");
         }
 
         private void Back()
         {
             _profilePlayer.CurrentState.Value = GameState.Start;
-            Log($"Back. Current Speed: {_profilePlayer.CurrentCar.Speed}");
+            this.Log($"Back. Current Speed: {_profilePlayer.CurrentCar.Speed}");
         }
 
 
@@ -98,8 +98,5 @@ namespace Features.Shed
                 if (upgradeHandlers.TryGetValue(itemId, out IUpgradeHandler handler))
                     handler.Upgrade(upgradable);
         }
-
-        private void Log(string message) =>
-            Debug.Log($"[{GetType().Name}] {message}");
     }
 }

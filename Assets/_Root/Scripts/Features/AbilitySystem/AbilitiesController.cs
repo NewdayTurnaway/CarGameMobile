@@ -1,7 +1,7 @@
 using Tool;
 using System;
 using UnityEngine;
-using JetBrains.Annotations;
+using System.Diagnostics.CodeAnalysis;
 using Features.AbilitySystem.Abilities;
 
 namespace Features.AbilitySystem
@@ -11,8 +11,8 @@ namespace Features.AbilitySystem
 
     internal class AbilitiesController : BaseController
     {
-        private readonly ResourcePath _viewPath = new ResourcePath("Prefabs/Ability/AbilitiesView");
-        private readonly ResourcePath _dataSourcePath = new ResourcePath("Configs/Ability/AbilityItemConfigDataSource");
+        private readonly ResourcePath _viewPath = new(Constants.PrefabPaths.Ui.ABILITIES);
+        private readonly ResourcePath _dataSourcePath = new(Constants.Configs.ABILITY_ITEM);
 
         private readonly AbilitiesView _view;
         private readonly AbilitiesRepository _repository;
@@ -29,7 +29,7 @@ namespace Features.AbilitySystem
             _abilityActivator
                 = abilityActivator ?? throw new ArgumentNullException(nameof(abilityActivator));
 
-            var abilityItemConfigs = LoadAbilityItemConfigs();
+            AbilityItemConfig[] abilityItemConfigs = LoadAbilityItemConfigs();
             _repository = CreateRepository(abilityItemConfigs);
             _view = LoadView(placeForUi);
 
@@ -42,7 +42,7 @@ namespace Features.AbilitySystem
 
         private AbilitiesRepository CreateRepository(AbilityItemConfig[] abilityItemConfigs)
         {
-            var repository = new AbilitiesRepository(abilityItemConfigs);
+            AbilitiesRepository repository = new(abilityItemConfigs);
             AddRepository(repository);
 
             return repository;

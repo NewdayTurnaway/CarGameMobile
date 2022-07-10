@@ -21,7 +21,7 @@ internal abstract class BaseRepository<TKey, TValue, TConfig> : IRepository
 
     private Dictionary<TKey, TValue> CreteItems(IEnumerable<TConfig> configs)
     {
-        var items = new Dictionary<TKey, TValue>();
+        Dictionary<TKey, TValue> items = new();
 
         foreach (TConfig config in configs)
             items[GetKey(config)] = CreateItem(config);

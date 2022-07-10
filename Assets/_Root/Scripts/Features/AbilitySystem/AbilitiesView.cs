@@ -16,7 +16,7 @@ namespace Features.AbilitySystem
         [SerializeField] private GameObject _abilityButtonPrefab;
         [SerializeField] private Transform _placeForButtons;
 
-        private readonly Dictionary<string, AbilityButtonView> _buttonViews = new Dictionary<string, AbilityButtonView>();
+        private readonly Dictionary<string, AbilityButtonView> _buttonViews = new();
 
 
         private void OnDestroy() => Clear();

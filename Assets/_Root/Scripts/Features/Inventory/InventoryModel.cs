@@ -12,7 +12,7 @@ namespace Features.Inventory
 
     internal class InventoryModel : IInventoryModel
     {
-        private readonly List<string> _equippedItems = new List<string>();
+        private readonly List<string> _equippedItems = new();
         public IReadOnlyList<string> EquippedItems => _equippedItems;
 
 

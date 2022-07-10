@@ -1,7 +1,7 @@
 using Tool;
 using System;
 using UnityEngine;
-using JetBrains.Annotations;
+using System.Diagnostics.CodeAnalysis;
 using Features.Inventory.Items;
 using Object = UnityEngine.Object;
 
@@ -13,8 +13,8 @@ namespace Features.Inventory
 
     internal class InventoryController : BaseController, IInventoryController
     {
-        private readonly ResourcePath _viewPath = new ResourcePath("Prefabs/Inventory/InventoryView");
-        private readonly ResourcePath _dataSourcePath = new ResourcePath("Configs/Inventory/ItemConfigDataSource");
+        private readonly ResourcePath _viewPath = new(Constants.PrefabPaths.Ui.INVENTORY);
+        private readonly ResourcePath _dataSourcePath = new(Constants.Configs.ITEM);
 
         private readonly InventoryView _view;
         private readonly IInventoryModel _model;
@@ -44,7 +44,7 @@ namespace Features.Inventory
         private ItemsRepository CreateRepository()
         {
             ItemConfig[] itemConfigs = ContentDataSourceLoader.LoadItemConfigs(_dataSourcePath);
-            var repository = new ItemsRepository(itemConfigs);
+            ItemsRepository repository = new(itemConfigs);
             AddRepository(repository);
 
             return repository;

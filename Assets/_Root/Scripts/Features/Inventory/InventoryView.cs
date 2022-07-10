@@ -18,7 +18,7 @@ namespace Features.Inventory
         [SerializeField] private GameObject _itemViewPrefab;
         [SerializeField] private Transform _placeForItems;
 
-        private readonly Dictionary<string, ItemView> _itemViews = new Dictionary<string, ItemView>();
+        private readonly Dictionary<string, ItemView> _itemViews = new();
 
 
         private void OnDestroy() => Clear();

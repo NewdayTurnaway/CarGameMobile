@@ -18,10 +18,10 @@ static class Constants
 
     public struct PrefabPaths
     {
-        public struct EndlessMove
+        public struct Input
         {
-            public const string KEYBOARD_INPUT = "Prefabs/Input/EndlessMoveKeyboardInput";
-            public const string ACCELERATION_INPUT = "Prefabs/Input/EndlessMoveAccelerationInput";
+            public const string KEYBOARD_INPUT = "Prefabs/Input/KeyboardInput";
+            public const string ACCELERATION_INPUT = "Prefabs/Input/AccelerationInput";
         }
 
         public struct Menu
@@ -30,8 +30,23 @@ static class Constants
             public const string SETTINGS = "Prefabs/UI/SettingsMenu";
         }
 
+        public struct Ui
+        {
+            public const string ABILITIES = "Prefabs/Ability/AbilitiesView";
+            public const string INVENTORY = "Prefabs/Inventory/InventoryView";
+            public const string SHED = "Prefabs/Shed/ShedView";
+        }
+
         public const string CAR = "Prefabs/Car";
         public const string BACKGROUND = "Prefabs/Background";
+        
+    }
+
+    public struct Configs
+    {
+        public const string ITEM = "Configs/Inventory/ItemConfigDataSource";
+        public const string ABILITY_ITEM = "Configs/Ability/AbilityItemConfigDataSource";
+        public const string UPGRADE_ITEM = "Configs/Shed/UpgradeItemConfigDataSource";
     }
 
     public struct Settings
