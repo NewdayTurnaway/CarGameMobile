@@ -24,12 +24,12 @@ namespace Services.IAP
 
         private void OnValidate()
         {
-            _productLibrary ??= _productLibrary = ResourcesLoader.Load<ProductLibrary>(new ResourcePath(Constants.Settings.Iap.UNITY_IAP));
+            _productLibrary ??= _productLibrary = ResourcesLoader.LoadObject<ProductLibrary>(new ResourcePath(Constants.Settings.Iap.UNITY_IAP));
         }
 
         protected override void Init()
         {
-            _productLibrary ??= _productLibrary = ResourcesLoader.Load<ProductLibrary>(new ResourcePath(Constants.Settings.Iap.UNITY_IAP));
+            _productLibrary ??= _productLibrary = ResourcesLoader.LoadObject<ProductLibrary>(new ResourcePath(Constants.Settings.Iap.UNITY_IAP));
             Initialized = new();
             PurchaseSucceed = new();
             PurchaseFailed = new();

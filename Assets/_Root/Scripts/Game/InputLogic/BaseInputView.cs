@@ -22,14 +22,10 @@ namespace Game.InputLogic
         }
 
 
-        protected void OnLeftMove(float value)
-        {
+        protected void OnLeftMove(float value) => 
             _leftMove.Value = value;
-        }
 
-        protected void OnRightMove(float value)
-        {
+        protected void OnRightMove(float value) => 
             _rightMove.Value = value;
-        }
     }
 }
