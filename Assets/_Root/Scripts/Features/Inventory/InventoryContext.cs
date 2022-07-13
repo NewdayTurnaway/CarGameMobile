@@ -1,14 +1,13 @@
 using Tool;
 using System;
 using UnityEngine;
-using JetBrains.Annotations;
 using Features.Inventory.Items;
-
+using System.Diagnostics.CodeAnalysis;
 using Object = UnityEngine.Object;
 
 namespace Features.Inventory
 {
-    internal class InventoryContext : BaseContext
+    internal sealed class InventoryContext : BaseContext
     {
         private static readonly ResourcePath _viewPath = new(Constants.PrefabPaths.Ui.INVENTORY);
         private static readonly ResourcePath _dataSourcePath = new(Constants.Configs.ITEM);

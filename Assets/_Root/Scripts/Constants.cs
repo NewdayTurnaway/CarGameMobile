@@ -16,12 +16,6 @@ static class Constants
         }
     }
 
-    public struct Variables
-    {
-        public const float SPEED_CAR = 15f;
-        public const float JUMP_HEIGHT = 10f;
-    }
-
     public struct PrefabPaths
     {
         public struct Input

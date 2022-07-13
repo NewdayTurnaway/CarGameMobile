@@ -1,15 +1,14 @@
+using Game;
 using Profile;
 using UnityEngine;
 using Services.IAP;
-using Services.Ads.UnityAds;
 using Services.Analytics;
+using Services.Ads.UnityAds;
 
 internal sealed class EntryPoint : MonoBehaviour
 {
     [Header("Initial Settings")]
-    [SerializeField] private float _speedCar;
-    [SerializeField] private float _jumpHeight;
-    [SerializeField] private GameState _initialState;
+    [SerializeField] private GameConfig _gameConfig;
 
     [Header("Scene Objects")]
     [SerializeField] private Transform _placeForUi;
@@ -18,7 +17,7 @@ internal sealed class EntryPoint : MonoBehaviour
 
     private void Start()
     {
-        ProfilePlayer profilePlayer = new(_speedCar, _jumpHeight, _initialState);
+        ProfilePlayer profilePlayer = new(_gameConfig.SpeedCar, _gameConfig.JumpHeight, _gameConfig.InitialState);
         _mainController = new(_placeForUi, profilePlayer);
 
         AnalyticsManager.Instance.MainMenuOpened();
