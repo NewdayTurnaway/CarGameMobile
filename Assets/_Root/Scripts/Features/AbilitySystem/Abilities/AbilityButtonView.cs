@@ -10,7 +10,7 @@ namespace Features.AbilitySystem.Abilities
         void Deinit();
     }
 
-    internal class AbilityButtonView : MonoBehaviour
+    internal sealed class AbilityButtonView : MonoBehaviour
     {
         [SerializeField] private Image _icon;
         [SerializeField] private Button _button;

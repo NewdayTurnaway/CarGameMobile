@@ -74,7 +74,7 @@ namespace Services.IAP
             if (_purchaseValidator.Validate(args))
             {
                 PurchaseSucceed.Invoke();
-                AnalyticsManager.Instance.SendPurchaseSucceed(product.definition.id,
+                AnalyticsManager.Instance.PurchaseSucceed(product.definition.id,
                     product.metadata.localizedPrice, product.metadata.localizedPriceString);
             }
             else

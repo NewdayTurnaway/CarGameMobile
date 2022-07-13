@@ -6,7 +6,7 @@ namespace Game.InputLogic
 {
     internal sealed class InputGameController : BaseController
     {
-        private readonly ResourcePath _resourcePath = new(Constants.PrefabPaths.EndlessMove.KEYBOARD_INPUT);
+        private readonly ResourcePath _resourcePath = new(Constants.PrefabPaths.Input.KEYBOARD_INPUT);
         private readonly BaseInputView _view;
 
 

@@ -7,7 +7,7 @@ namespace Features.Shed.Upgrade
         IReadOnlyDictionary<string, IUpgradeHandler> Items { get; }
     }
 
-    internal class UpgradeHandlersRepository
+    internal sealed class UpgradeHandlersRepository
         : BaseRepository<string, IUpgradeHandler, UpgradeItemConfig>, IUpgradeHandlersRepository
     {
         public UpgradeHandlersRepository(IEnumerable<UpgradeItemConfig> configs) : base(configs)
@@ -20,6 +20,7 @@ namespace Features.Shed.Upgrade
             config.Type switch
             {
                 UpgradeType.Speed => new SpeedUpgradeHandler(config.Value),
+                UpgradeType.JumpHeight => new JumpHeightUpgradeHandler(config.Value),
                 _ => StubUpgradeHandler.Default
             };
     }

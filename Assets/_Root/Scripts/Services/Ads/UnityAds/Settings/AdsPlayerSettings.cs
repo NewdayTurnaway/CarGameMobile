@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Services.Ads.UnityAds.Settings
 {
     [Serializable]
-    internal class AdsPlayerSettings
+    internal sealed class AdsPlayerSettings
     {
         [field: SerializeField] public bool Enabled { get; private set; }
         [SerializeField] private string _androidId;

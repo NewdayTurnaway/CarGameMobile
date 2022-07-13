@@ -1,6 +1,6 @@
 namespace Features.Shed.Upgrade
 {
-    internal class SpeedUpgradeHandler : IUpgradeHandler
+    internal sealed class SpeedUpgradeHandler : IUpgradeHandler
     {
         private readonly float _speed;
 

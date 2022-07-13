@@ -20,12 +20,12 @@ namespace Services.Ads.UnityAds
 
         private void OnValidate()
         {
-            _settings ??= _settings = ResourcesLoader.LoadObject<UnityAdsSettings>(new ResourcePath(Constants.Settings.Ads.UNITY_ADS));
+            _settings ??= ResourcesLoader.LoadObject<UnityAdsSettings>(new ResourcePath(Constants.Settings.Ads.UNITY_ADS));
         }
 
         protected override void Init()
         {
-            _settings ??= _settings = ResourcesLoader.LoadObject<UnityAdsSettings>(new ResourcePath(Constants.Settings.Ads.UNITY_ADS));
+            _settings ??= ResourcesLoader.LoadObject<UnityAdsSettings>(new ResourcePath(Constants.Settings.Ads.UNITY_ADS));
             Initialized = new();
 
             InitializeAds();

@@ -10,7 +10,7 @@ namespace Features.Shed
         void Deinit();
     }
 
-    internal class ShedView : MonoBehaviour, IShedView
+    internal sealed class ShedView : MonoBehaviour, IShedView
     {
         [SerializeField] private Button _buttonApply;
         [SerializeField] private Button _buttonBack;

@@ -65,7 +65,7 @@ namespace Game.InputLogic
             if (!_usingJoystick)
                 return;
 
-            float axisOffset = CrossPlatformInputManager.GetAxis("Horizontal");
+            float axisOffset = CrossPlatformInputManager.GetAxis(Constants.Inputs.HORIZONTAL);
             float moveValue = Speed * _inputMultiplier * Time.deltaTime * axisOffset;
 
             float abs = Mathf.Abs(moveValue);

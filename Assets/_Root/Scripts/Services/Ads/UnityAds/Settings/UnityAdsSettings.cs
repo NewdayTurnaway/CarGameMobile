@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Services.Ads.UnityAds
 {
     [CreateAssetMenu(fileName = nameof(UnityAdsSettings), menuName = "Settings/Ads/" + nameof(UnityAdsSettings))]
-    internal class UnityAdsSettings : ScriptableObject
+    internal sealed class UnityAdsSettings : ScriptableObject
     {
         [Header("Game ID")]
         [SerializeField] private string _androidGameId;

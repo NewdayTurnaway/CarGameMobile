@@ -13,12 +13,12 @@ namespace Features.Inventory
         void Unselect(string id);
     }
 
-    internal class InventoryView : MonoBehaviour, IInventoryView
+    internal sealed class InventoryView : MonoBehaviour, IInventoryView
     {
         [SerializeField] private GameObject _itemViewPrefab;
         [SerializeField] private Transform _placeForItems;
 
-        private readonly Dictionary<string, ItemView> _itemViews = new Dictionary<string, ItemView>();
+        private readonly Dictionary<string, ItemView> _itemViews = new();
 
 
         private void OnDestroy() => Clear();

@@ -31,12 +31,6 @@ namespace Ui
             return objectView.GetComponent<MainMenuView>();
         }
 
-        protected override void OnDispose()
-        {
-            UnityAdsService.Value.Initialized.RemoveListener(RewardedAd);
-            IAPService.Value.Initialized.RemoveListener(BuyItem);
-        }
-
         private void StartGame() => 
             _profilePlayer.CurrentState.Value = GameState.Game;
 

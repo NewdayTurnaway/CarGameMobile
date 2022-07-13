@@ -16,24 +16,24 @@ namespace Services.Analytics
             };
         }
 
-        public void SendMainMenuOpened()
+        public void MainMenuOpened()
         {
-            string message = nameof(SendMainMenuOpened);
-            SendEvent(message);
-            this.Log(message);
+            string name = nameof(MainMenuOpened);
+            SendEvent(name);
+            this.Log(name);
         }
 
-        public void SendGameStarted()
+        public void GameStarted()
         {
-            string message = nameof(SendGameStarted);
-            SendEvent(message);
-            this.Log(message);
+            string name = nameof(GameStarted);
+            SendEvent(name);
+            this.Log(name);
         }
 
-        public void SendPurchaseSucceed(string productId, decimal amount, string currency)
+        public void PurchaseSucceed(string productId, decimal amount, string currency)
         {
             Transaction(productId, amount, currency);
-            this.Log($"{nameof(SendPurchaseSucceed)} | {productId} | {amount} | {currency}");
+            this.Log($"{nameof(PurchaseSucceed)} | {productId} | {amount} | {currency}");
         }
 
         private void SendEvent(string eventName)
