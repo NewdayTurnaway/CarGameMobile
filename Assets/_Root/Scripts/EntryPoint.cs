@@ -6,15 +6,19 @@ using Services.Analytics;
 
 internal sealed class EntryPoint : MonoBehaviour
 {
-    private const GameState INITIAL_STATE = GameState.Start;
+    [Header("Initial Settings")]
+    [SerializeField] private float _speedCar;
+    [SerializeField] private float _jumpHeight;
+    [SerializeField] private GameState _initialState;
 
+    [Header("Scene Objects")]
     [SerializeField] private Transform _placeForUi;
 
     private MainController _mainController;
 
     private void Start()
     {
-        ProfilePlayer profilePlayer = new(Constants.Variables.SPEED_CAR, Constants.Variables.JUMP_HEIGHT, INITIAL_STATE);
+        ProfilePlayer profilePlayer = new(_speedCar, _jumpHeight, _initialState);
         _mainController = new(_placeForUi, profilePlayer);
 
         AnalyticsManager.Instance.MainMenuOpened();

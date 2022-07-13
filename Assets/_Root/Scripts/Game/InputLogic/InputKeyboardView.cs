@@ -1,5 +1,4 @@
 using UnityEngine;
-using JoostenProductions;
 
 namespace Game.InputLogic
 {
@@ -7,13 +6,7 @@ namespace Game.InputLogic
     {
         [SerializeField] private float _inputMultiplier = 10;
 
-        private void Start() =>
-            UpdateManager.SubscribeToUpdate(Move);
-
-        private void OnDestroy() =>
-            UpdateManager.UnsubscribeFromUpdate(Move);
-
-        private void Move()
+        protected override void Move()
         {
             float axisOffset = Input.GetAxis(Constants.Inputs.HORIZONTAL);
             float moveValue = _inputMultiplier * Time.deltaTime * axisOffset;

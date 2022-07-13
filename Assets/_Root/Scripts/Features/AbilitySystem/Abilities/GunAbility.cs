@@ -9,22 +9,22 @@ namespace Features.AbilitySystem.Abilities
     {
         private const float Y_OFFSET = 1.5f;
 
-        private readonly AbilityItemConfig _config;
+        private readonly IAbilityItem _abilityItem;
 
 
-        public GunAbility([NotNull] AbilityItemConfig config) =>
-            _config = config ?? throw new ArgumentNullException(nameof(config));
+        public GunAbility([NotNull] IAbilityItem abilityItem) =>
+            _abilityItem = abilityItem ?? throw new ArgumentNullException(nameof(abilityItem));
 
 
         public void Apply(IAbilityActivator activator)
         {
-            GameObject projectile = Object.Instantiate(_config.Projectile);
+            GameObject projectile = Object.Instantiate(_abilityItem.Projectile);
             Rigidbody2D projectileRigidbody = projectile.GetComponent<Rigidbody2D>();
             
             Vector3 viewPosition = activator.BodyRigidbody.transform.position;
             projectile.transform.position = new(viewPosition.x, viewPosition.y + Y_OFFSET, viewPosition.z);
             
-            Vector3 force = activator.ViewGameObject.transform.right * _config.Value;
+            Vector3 force = activator.ViewGameObject.transform.right * _abilityItem.Value;
             projectileRigidbody.AddForce(force, ForceMode2D.Force);
         }
     }

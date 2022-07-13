@@ -6,6 +6,7 @@ using UnityEngine;
 using Features.Inventory;
 using Features.Shed.Upgrade;
 using System.Diagnostics.CodeAnalysis;
+using Object = UnityEngine.Object;
 
 namespace Features.Shed
 {
@@ -20,7 +21,7 @@ namespace Features.Shed
 
         private readonly ShedView _view;
         private readonly ProfilePlayer _profilePlayer;
-        private readonly InventoryController _inventoryController;
+        private readonly InventoryContext _inventoryContext;
         private readonly UpgradeHandlersRepository _upgradeHandlersRepository;
 
 
@@ -35,7 +36,7 @@ namespace Features.Shed
                 = profilePlayer ?? throw new ArgumentNullException(nameof(profilePlayer));
 
             _upgradeHandlersRepository = CreateRepository();
-            _inventoryController = CreateInventoryController(placeForUi);
+            _inventoryContext = CreateInventoryContext(placeForUi, _profilePlayer.Inventory);
             _view = LoadView(placeForUi);
 
             _view.Init(Apply, Back);
@@ -51,23 +52,22 @@ namespace Features.Shed
             return repository;
         }
 
-        private InventoryController CreateInventoryController(Transform placeForUi)
+        private InventoryContext CreateInventoryContext(Transform placeForUi, IInventoryModel model)
         {
-            InventoryController inventoryController = new(placeForUi, _profilePlayer.Inventory);
-            AddController(inventoryController);
+            InventoryContext context = new(placeForUi, model);
+            AddContext(context);
 
-            return inventoryController;
+            return context;
         }
 
         private ShedView LoadView(Transform placeForUi)
         {
             GameObject prefab = ResourcesLoader.LoadPrefab(_viewPath);
-            GameObject objectView = UnityEngine.Object.Instantiate(prefab, placeForUi, false);
+            GameObject objectView = Object.Instantiate(prefab, placeForUi, false);
             AddGameObject(objectView);
 
             return objectView.GetComponent<ShedView>();
         }
-
 
         private void Apply()
         {
@@ -87,7 +87,6 @@ namespace Features.Shed
             _profilePlayer.CurrentState.Value = GameState.Start;
             this.Log($"Back. Current: Speed {_profilePlayer.CurrentCar.Speed} | JumpHeight {_profilePlayer.CurrentCar.JumpHeight}");
         }
-
 
         private void UpgradeWithEquippedItems(
             IUpgradable upgradable,

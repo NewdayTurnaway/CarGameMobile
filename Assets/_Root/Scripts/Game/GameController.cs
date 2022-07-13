@@ -16,8 +16,8 @@ namespace Game
 
         private readonly CarController _carController;
         private readonly InputGameController _inputGameController;
-        private readonly AbilitiesController _abilitiesController;
         private readonly TapeBackgroundController _tapeBackgroundController;
+        private readonly AbilitiesContext _abilitiesContext;
 
         public GameController(Transform placeForUi, ProfilePlayer profilePlayer)
         {
@@ -28,8 +28,8 @@ namespace Game
 
             _carController = CreateCarController(profilePlayer.CurrentCar);
             _inputGameController = CreateInputGameController(profilePlayer, _leftMoveDiff, _rightMoveDiff);
-            _abilitiesController = CreateAbilitiesController(placeForUi, _carController);
             _tapeBackgroundController = CreateTapeBackground(_leftMoveDiff, _rightMoveDiff);
+            _abilitiesContext = CreateAbilitiesContext(placeForUi, _carController);
         }
 
         private TapeBackgroundController CreateTapeBackground(SubscriptionProperty<float> leftMoveDiff, SubscriptionProperty<float> rightMoveDiff)
@@ -57,12 +57,12 @@ namespace Game
             return carController;
         }
 
-        private AbilitiesController CreateAbilitiesController(Transform placeForUi, IAbilityActivator abilityActivator)
+        private AbilitiesContext CreateAbilitiesContext(Transform placeForUi, IAbilityActivator abilityActivator)
         {
-            AbilitiesController abilitiesController = new(placeForUi, abilityActivator);
-            AddController(abilitiesController);
+            AbilitiesContext context = new(placeForUi, abilityActivator);
+            AddContext(context);
 
-            return abilitiesController;
+            return context;
         }
     }
 }
