@@ -1,14 +1,13 @@
 using Tool;
 using System;
 using UnityEngine;
-using JetBrains.Annotations;
+using System.Diagnostics.CodeAnalysis;
 using Features.AbilitySystem.Abilities;
-
 using Object = UnityEngine.Object;
 
 namespace Features.AbilitySystem
 {
-    internal class AbilitiesContext : BaseContext
+    internal sealed class AbilitiesContext : BaseContext
     {
         private static readonly ResourcePath _dataSourcePath = new(Constants.Configs.ABILITY_ITEM);
         private static readonly ResourcePath _viewPath = new(Constants.PrefabPaths.Ui.ABILITIES);
