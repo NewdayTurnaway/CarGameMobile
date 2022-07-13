@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d1e1abceef772745a9f5023d191a08b, type: 3}
   m_Name: InitialSettings
   m_EditorClassIdentifier: 
-  <SpeedCar>k__BackingField: 0
-  <JumpHeight>k__BackingField: 0
-  <InitialState>k__BackingField: 0
+  <SpeedCar>k__BackingField: 15
+  <JumpHeight>k__BackingField: 12
+  <InitialState>k__BackingField: 1

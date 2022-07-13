@@ -11,7 +11,7 @@ internal sealed class MainController : BaseController
 
     private MainMenuController _mainMenuController;
     private SettingsMenuController _settingsMenuController;
-    private ShedController _shedController;
+    private ShedContext _shedContext;
     private GameController _gameController;
 
     public MainController(Transform placeForUi, ProfilePlayer profilePlayer)
@@ -39,7 +39,7 @@ internal sealed class MainController : BaseController
                 _mainMenuController = new(_placeForUi, _profilePlayer);
                 break;
             case GameState.Shed:
-                _shedController = new ShedController(_placeForUi, _profilePlayer);
+                _shedContext = CreateShedContext(_placeForUi, _profilePlayer);
                 break;
             case GameState.Settings:
                 _settingsMenuController = new(_placeForUi, _profilePlayer);
@@ -54,7 +54,15 @@ internal sealed class MainController : BaseController
     {
         _mainMenuController?.Dispose();
         _settingsMenuController?.Dispose();
-        _shedController?.Dispose();
+        _shedContext?.Dispose();
         _gameController?.Dispose();
+    }
+
+    private ShedContext CreateShedContext(Transform placeForUi, ProfilePlayer profilePlayer)
+    {
+        ShedContext context = new(placeForUi, profilePlayer);
+        AddContext(context);
+
+        return context;
     }
 }
