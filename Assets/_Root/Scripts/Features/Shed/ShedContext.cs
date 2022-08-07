@@ -27,11 +27,11 @@ namespace Features.Shed
 
         private ShedController CreateController(Transform placeForUi, ProfilePlayer profilePlayer)
         {
-            InventoryContext inventoryContext = CreateInventoryContext(placeForUi, profilePlayer.Inventory);
+            CreateInventoryContext(placeForUi, profilePlayer.Inventory);
             ShedView view = LoadView(placeForUi);
             UpgradeHandlersRepository upgradeHandlersRepository = CreateRepository();
 
-            ShedController controller = new(placeForUi, profilePlayer, view, upgradeHandlersRepository, inventoryContext);
+            ShedController controller = new(profilePlayer, view, upgradeHandlersRepository);
 
             AddController(controller);
 

@@ -22,15 +22,10 @@ namespace Features.Shed
 
 
         public ShedController(
-            [NotNull] Transform placeForUi,
             [NotNull] ProfilePlayer profilePlayer,
             [NotNull] IShedView view,
-            [NotNull] IUpgradeHandlersRepository upgradeHandlersRepository,
-            [NotNull] InventoryContext inventoryContext)
+            [NotNull] IUpgradeHandlersRepository upgradeHandlersRepository)
         {
-            if (placeForUi == null)
-                throw new ArgumentNullException(nameof(placeForUi));
-
             _view
                 = view ?? throw new ArgumentNullException(nameof(view));
 
@@ -39,9 +34,6 @@ namespace Features.Shed
 
             _profilePlayer
                 = profilePlayer ?? throw new ArgumentNullException(nameof(profilePlayer));
-            
-            _inventoryContext 
-                = inventoryContext ?? throw new ArgumentNullException(nameof(inventoryContext));
 
             _view.Init(Apply, Back);
         }

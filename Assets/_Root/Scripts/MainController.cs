@@ -26,6 +26,7 @@ internal sealed class MainController : BaseController
     protected override void OnDispose()
     {
         DisposeControllers();
+        DisposeContexts();
 
         _profilePlayer.CurrentState.UnSubscribeOnChange(OnChangeGameState);
     }
@@ -33,6 +34,7 @@ internal sealed class MainController : BaseController
     private void OnChangeGameState(GameState state)
     {
         DisposeControllers();
+        DisposeContexts();
         switch (state)
         {
             case GameState.Start:
@@ -54,8 +56,12 @@ internal sealed class MainController : BaseController
     {
         _mainMenuController?.Dispose();
         _settingsMenuController?.Dispose();
-        _shedContext?.Dispose();
         _gameController?.Dispose();
+    }
+
+    private void DisposeContexts()
+    {
+        _shedContext?.Dispose();
     }
 
     private ShedContext CreateShedContext(Transform placeForUi, ProfilePlayer profilePlayer)
