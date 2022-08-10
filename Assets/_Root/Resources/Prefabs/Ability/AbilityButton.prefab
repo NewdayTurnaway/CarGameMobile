@@ -128,8 +128,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e71ccf1ff6384f75a3c32afa490714bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rectTransform: {fileID: 6811999070892879682}
   _icon: {fileID: 3144614093397460754}
   _button: {fileID: 7355306249026046447}
+  _curveEase: 1
+  _duration: 0.6
+  _strength: 30
+  _loopType: 0
+  _loops: 0
 --- !u!114 &7355306249026046447
 MonoBehaviour:
   m_ObjectHideFlags: 0
