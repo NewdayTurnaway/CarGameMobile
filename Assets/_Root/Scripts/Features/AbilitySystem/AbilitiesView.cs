@@ -7,7 +7,7 @@ namespace Features.AbilitySystem
 {
     internal interface IAbilitiesView
     {
-        void Display(IEnumerable<IAbilityItem> abilityItems, Action<string, Action> clicked);
+        void Display(IEnumerable<IAbilityItem> abilityItems, Action<string> clicked);
         void Clear();
     }
 
@@ -22,7 +22,7 @@ namespace Features.AbilitySystem
         private void OnDestroy() => Clear();
 
 
-        public void Display(IEnumerable<IAbilityItem> abilityItems, Action<string, Action> clicked)
+        public void Display(IEnumerable<IAbilityItem> abilityItems, Action<string> clicked)
         {
             Clear();
 
@@ -39,7 +39,7 @@ namespace Features.AbilitySystem
         }
 
 
-        private AbilityButtonView CreateButtonView(IAbilityItem item, Action<string, Action> clicked)
+        private AbilityButtonView CreateButtonView(IAbilityItem item, Action<string> clicked)
         {
             GameObject objectView = Instantiate(_abilityButtonPrefab, _placeForButtons, false);
             AbilityButtonView buttonView = objectView.GetComponent<AbilityButtonView>();
@@ -47,7 +47,7 @@ namespace Features.AbilitySystem
             buttonView.Init
             (
                 item.Icon,
-                () => clicked?.Invoke(item.Id, buttonView.ActivateAnimation)
+                () => clicked?.Invoke(item.Id)
             );
 
             return buttonView;

@@ -39,12 +39,10 @@ namespace Features.AbilitySystem
         protected override void OnDispose() =>
             _view.Clear();
 
-        private void OnAbilityViewClicked(string abilityId, Action ActivateAnimation)
+        private void OnAbilityViewClicked(string abilityId)
         {
             if (_repository.Items.TryGetValue(abilityId, out IAbility ability))
                 ability.Apply(_activator);
-            
-            ActivateAnimation();
         }
     }
 }
