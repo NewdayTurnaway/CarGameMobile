@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Features.Inventory.Items
 {
-    [CreateAssetMenu(fileName = nameof(ItemConfig), menuName = "Configs/" + nameof(ItemConfig))]
+    [CreateAssetMenu(fileName = nameof(ItemConfig), menuName = Constants.Configs.MENU_PATH + nameof(ItemConfig))]
     internal sealed class ItemConfig : ScriptableObject
     {
         [field: SerializeField] public string Id { get; private set; }

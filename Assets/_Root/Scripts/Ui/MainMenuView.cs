@@ -6,28 +6,35 @@ namespace Ui
 {
     internal sealed class MainMenuView : MonoBehaviour
     {
-        [SerializeField] private Button _buttonStart;
-        [SerializeField] private Button _buttonShed;
-        [SerializeField] private Button _buttonSettings;
-        [SerializeField] private Button _buttonRewardedAd;
-        [SerializeField] private Button _buttonBuyItem;
+        [SerializeField] private Button _startButton;
+        [SerializeField] private Button _settingsButton;
+        [SerializeField] private Button _shedButton;
+        [SerializeField] private Button _adsRewardButton;
+        [SerializeField] private Button _buyProductButton;
+        [SerializeField] private Button _rewardsButton;
+        [SerializeField] private Button _exitButton;
 
-        public void Init(UnityAction startGame, UnityAction openShed, UnityAction settings, UnityAction rewardedAd, UnityAction buyItem)
+        public void Init(UnityAction startGame, UnityAction openSettings, UnityAction openShed, 
+            UnityAction playRewardedAds, UnityAction buyProduct, UnityAction openDailyReward, UnityAction exitGame)
         {
-            _buttonStart.onClick.AddListener(startGame);
-            _buttonShed.onClick.AddListener(openShed);
-            _buttonSettings.onClick.AddListener(settings);
-            _buttonRewardedAd.onClick.AddListener(rewardedAd);
-            _buttonBuyItem.onClick.AddListener(buyItem);
+            _startButton.onClick.AddListener(startGame);
+            _settingsButton.onClick.AddListener(openSettings);
+            _shedButton.onClick.AddListener(openShed);
+            _adsRewardButton.onClick.AddListener(playRewardedAds);
+            _buyProductButton.onClick.AddListener(buyProduct);
+            _rewardsButton.onClick.AddListener(openDailyReward);
+            _exitButton.onClick.AddListener(exitGame);
         }
 
         public void OnDestroy()
         {
-            _buttonStart.onClick.RemoveAllListeners();
-            _buttonShed.onClick.RemoveAllListeners();
-            _buttonSettings.onClick.RemoveAllListeners();
-            _buttonRewardedAd.onClick.RemoveAllListeners();
-            _buttonBuyItem.onClick.RemoveAllListeners();
+            _startButton.onClick.RemoveAllListeners();
+            _settingsButton.onClick.RemoveAllListeners();
+            _shedButton.onClick.RemoveAllListeners();
+            _adsRewardButton.onClick.RemoveAllListeners();
+            _buyProductButton.onClick.RemoveAllListeners();
+            _rewardsButton.onClick.RemoveAllListeners();
+            _exitButton.onClick.RemoveAllListeners();
         }
     }
 }

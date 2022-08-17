@@ -17,9 +17,9 @@ namespace Ui
         {
             _profilePlayer = profilePlayer;
             _view = LoadView(placeForUi);
-            _view.Init(StartGame, OpenShed, Settings, RewardedAd, BuyItem);
-            UnityAdsService.Instance.Initialized.AddListener(RewardedAd);
-            IAPService.Instance.Initialized.AddListener(BuyItem);
+            _view.Init(StartGame, OpenSettings, OpenShed, PlayRewardedAds, BuyProduct, OpenDailyReward, ExitGame);
+            UnityAdsService.Instance.Initialized.AddListener(PlayRewardedAds);
+            IAPService.Instance.Initialized.AddListener(BuyProduct);
         }
 
         private MainMenuView LoadView(Transform placeForUi)
@@ -31,19 +31,30 @@ namespace Ui
             return objectView.GetComponent<MainMenuView>();
         }
 
-        private void StartGame() => 
+        private void StartGame() =>
             _profilePlayer.CurrentState.Value = GameState.Game;
+
+        private void OpenSettings() =>
+            _profilePlayer.CurrentState.Value = GameState.Settings;
 
         private void OpenShed() =>
             _profilePlayer.CurrentState.Value = GameState.Shed;
 
-        private void Settings() => 
-            _profilePlayer.CurrentState.Value = GameState.Settings;
-
-        private void RewardedAd() => 
+        private void PlayRewardedAds() =>
             UnityAdsService.Instance.RewardedPlayer.Play();
 
-        private void BuyItem() =>
+        private void BuyProduct() =>
             IAPService.Instance.Buy(Constants.Names.Iap.PRODUCT_2);
+
+        private void OpenDailyReward() =>
+            _profilePlayer.CurrentState.Value = GameState.Rewards;
+
+        private void ExitGame()
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#endif
+            Application.Quit();
+        }
     }
 }
