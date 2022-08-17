@@ -28,6 +28,8 @@ static class Constants
         {
             public const string MAIN = "Prefabs/UI/MainMenu";
             public const string SETTINGS = "Prefabs/UI/SettingsMenu";
+            public const string POPUP = "Prefabs/UI/Popup";
+            public const string IN_GAME = "Prefabs/UI/InGameMenu";
         }
 
         public struct Ui

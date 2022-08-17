@@ -6,6 +6,8 @@ using Game.TapeBackground;
 using Features.AbilitySystem;
 using Services.Analytics;
 using UnityEngine;
+using Ui;
+using Features.Fight;
 
 namespace Game
 {
@@ -15,9 +17,6 @@ namespace Game
         private readonly SubscriptionProperty<float> _rightMoveDiff;
 
         private readonly CarController _carController;
-        private readonly InputGameController _inputGameController;
-        private readonly TapeBackgroundController _tapeBackgroundController;
-        private readonly AbilitiesContext _abilitiesContext;
 
         public GameController(Transform placeForUi, ProfilePlayer profilePlayer)
         {
@@ -27,9 +26,27 @@ namespace Game
             _rightMoveDiff = new();
 
             _carController = CreateCarController(profilePlayer.CurrentCar);
-            _inputGameController = CreateInputGameController(profilePlayer, _leftMoveDiff, _rightMoveDiff);
-            _tapeBackgroundController = CreateTapeBackground(_leftMoveDiff, _rightMoveDiff);
-            _abilitiesContext = CreateAbilitiesContext(placeForUi, _carController);
+            CreateInputGameController(profilePlayer, _leftMoveDiff, _rightMoveDiff);
+            CreateTapeBackground(_leftMoveDiff, _rightMoveDiff);
+            CreateAbilitiesContext(placeForUi, _carController);
+            CreateStartFightController(placeForUi, profilePlayer);
+            CreateInGameMenuController(placeForUi, profilePlayer);
+        }
+
+        private InGameMenuController CreateInGameMenuController(Transform placeForUi, ProfilePlayer profilePlayer)
+        {
+            InGameMenuController controller = new(placeForUi, profilePlayer);
+            AddController(controller);
+
+            return controller;
+        }
+
+        private StartFightController CreateStartFightController(Transform placeForUi, ProfilePlayer profilePlayer)
+        {
+            StartFightController controller = new(placeForUi, profilePlayer);
+            AddController(controller);
+
+            return controller;
         }
 
         private TapeBackgroundController CreateTapeBackground(SubscriptionProperty<float> leftMoveDiff, SubscriptionProperty<float> rightMoveDiff)

@@ -57,7 +57,7 @@ namespace Features.Rewards
 
         private CurrencyController CreateCurrencyController(CurrencyModel currencyModel, Transform placeForUi)
         {
-            var currencyController = new CurrencyController(currencyModel, placeForUi);
+            CurrencyController currencyController = new(currencyModel, placeForUi);
             AddController(currencyController);
 
             return currencyController;
