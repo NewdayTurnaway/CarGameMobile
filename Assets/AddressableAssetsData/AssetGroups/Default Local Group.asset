@@ -21,6 +21,10 @@ MonoBehaviour:
     m_Address: Assets/_Root/Prefabs/SpawnedButton.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: a68193e2aef6b43d4b4e05b967814d88
+    m_Address: Assets/_Root/Sprites/Rewards/UI_Graphic_Resource_Background.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f2fd3f2671b0342c085196b05069e11a, type: 2}
   m_SchemaSet:

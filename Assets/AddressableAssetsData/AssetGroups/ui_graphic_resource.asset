@@ -29,6 +29,10 @@ MonoBehaviour:
     m_Address: Assets/_Root/Sprites/Rewards/UI_Graphic_Resource_Gems.png
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 07ee7a3ee5a4c8a4cb632a9d8131a730
+    m_Address: Assets/_Root/Sprites/Ui/button/button_start.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f2fd3f2671b0342c085196b05069e11a, type: 2}
   m_SchemaSet:
