@@ -11,7 +11,8 @@ namespace Tool.Notifications.Examples
         [SerializeField] private NotificationSettings _settings;
 
         [Header("Scene Components")]
-        [SerializeField] private Button _buttonNotification;
+        [SerializeField] private Button _notificationButton;
+        [SerializeField] private Button _delAllNotificationButton;
 
         private INotificationScheduler _scheduler;
 
@@ -22,16 +23,25 @@ namespace Tool.Notifications.Examples
             _scheduler = schedulerFactory.Create();
         }
 
-        private void OnEnable() =>
-            _buttonNotification.onClick.AddListener(CreateNotification);
+        private void OnEnable()
+        {
+            _notificationButton.onClick.AddListener(CreateNotification);
+            _delAllNotificationButton.onClick.AddListener(DeleteNotification);
+        }
 
-        private void OnDisable() =>
-            _buttonNotification.onClick.RemoveAllListeners();
+        private void OnDisable()
+        {
+            _notificationButton.onClick.RemoveListener(CreateNotification);
+            _delAllNotificationButton.onClick.RemoveListener(DeleteNotification);
+        }
 
         private void CreateNotification()
         {
             foreach (NotificationData notificationData in _settings.Notifications)
                 _scheduler.ScheduleNotification(notificationData);
         }
+
+        private void DeleteNotification() => 
+            _scheduler.RemoveAllNotifications();
     }
 }

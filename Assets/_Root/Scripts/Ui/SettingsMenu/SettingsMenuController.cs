@@ -1,6 +1,8 @@
 using Profile;
 using Tool;
+using Tool.Localization;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 using Object = UnityEngine.Object;
 
 namespace Ui
@@ -15,7 +17,7 @@ namespace Ui
         {
             _profilePlayer = profilePlayer;
             _view = LoadView(placeForUi);
-            _view.Init(ReturnToMenu);
+            _view.Init(SetEnLanguage, SetRuLanguage, ReturnToMenu);
         }
 
         private SettingsMenuView LoadView(Transform placeForUi)
@@ -27,9 +29,16 @@ namespace Ui
             return objectView.GetComponent<SettingsMenuView>();
         }
 
-        private void ReturnToMenu()
-        {
+        private void ChangeLanguage(Language language) =>
+            LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[(int)language];
+
+        private void SetEnLanguage() => 
+            ChangeLanguage(Language.En);
+
+        private void SetRuLanguage() =>
+            ChangeLanguage(Language.Ru);
+
+        private void ReturnToMenu() => 
             _profilePlayer.CurrentState.Value = GameState.Start;
-        }
     }
 }

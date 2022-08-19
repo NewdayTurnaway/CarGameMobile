@@ -32,6 +32,13 @@ namespace Tool.PushNotifications
 #endif
         }
 
+        public void RemoveAllNotifications()
+        {
+#if UNITY_ANDROID
+            AndroidNotificationCenter.CancelAllNotifications();
+#endif
+        }
+
 #if UNITY_ANDROID
         private AndroidNotification CreateAndroidNotification(NotificationData notificationData) =>
             notificationData.RepeatType switch

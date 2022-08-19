@@ -14,9 +14,9 @@ namespace Tool.Localization.Examples
 
         private void Start()
         {
-            _englishButton.onClick.AddListener(() => ChangeLanguage(0));
-            _frenchButton.onClick.AddListener(() => ChangeLanguage(1));
-            _russianButton.onClick.AddListener(() => ChangeLanguage(2));
+            _englishButton.onClick.AddListener(() => ChangeLanguage(Language.En));
+            _frenchButton.onClick.AddListener(() => ChangeLanguage(Language.Fr));
+            _russianButton.onClick.AddListener(() => ChangeLanguage(Language.Ru));
             OnStarted();
         }
 
@@ -31,7 +31,7 @@ namespace Tool.Localization.Examples
         protected virtual void OnStarted() { }
         protected virtual void OnDestroyed() { }
 
-        private void ChangeLanguage(int index) =>
-            LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[index];
+        private void ChangeLanguage(Language language) =>
+            LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[(int)language];
     }
 }

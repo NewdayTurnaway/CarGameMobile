@@ -7,5 +7,8 @@ namespace Tool.PushNotifications
     {
         public void ScheduleNotification(NotificationData notificationData) =>
             Debug.Log($"[{GetType()}] {notificationData}");
+
+        public void RemoveAllNotifications() =>
+            Debug.Log(nameof(RemoveAllNotifications));
     }
 }

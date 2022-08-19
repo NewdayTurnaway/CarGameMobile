@@ -5,5 +5,6 @@ namespace Tool.PushNotifications
     internal interface INotificationScheduler
     {
         void ScheduleNotification(NotificationData notificationData);
+        void RemoveAllNotifications();
     }
 }
