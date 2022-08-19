@@ -22,6 +22,14 @@ namespace Tool.PushNotifications
 #endif
         }
 
+        public void RemoveAllNotifications()
+        {
+#if UNITY_IOS
+            iOSNotificationCenter.RemoveAllDeliveredNotifications();
+            iOSNotificationCenter.RemoveAllScheduledNotifications();
+#endif
+        }
+
 #if UNITY_IOS
         private iOSNotificationTrigger CreateIosTrigger(NotificationData notificationData) =>
             notificationData.RepeatType switch

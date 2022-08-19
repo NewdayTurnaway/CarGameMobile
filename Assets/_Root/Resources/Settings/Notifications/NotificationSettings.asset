@@ -17,6 +17,10 @@ MonoBehaviour:
     <Name>k__BackingField: Main Channel
     <Description>k__BackingField: It is the main channel!
     _importance: 4
+  - <Id>k__BackingField: extra_notification_id
+    <Name>k__BackingField: Extra Channel
+    <Description>k__BackingField: It is the main channel!
+    _importance: 4
   <Notifications>k__BackingField:
   - <Id>k__BackingField: notification_id
     <Title>k__BackingField: Game Notification
@@ -29,4 +33,16 @@ MonoBehaviour:
       <Hour>k__BackingField: 23
       <Minute>k__BackingField: 30
     <RepeatInterval>k__BackingField:
-      <Seconds>k__BackingField: 30
+      <Seconds>k__BackingField: 15
+  - <Id>k__BackingField: extra_notification_id
+    <Title>k__BackingField: Extra Game Notification
+    <Text>k__BackingField: Extra Notification
+    <RepeatType>k__BackingField: 1
+    <FireTime>k__BackingField:
+      <Year>k__BackingField: 2022
+      <Month>k__BackingField: 8
+      <Day>k__BackingField: 18
+      <Hour>k__BackingField: 9
+      <Minute>k__BackingField: 0
+    <RepeatInterval>k__BackingField:
+      <Seconds>k__BackingField: 10
