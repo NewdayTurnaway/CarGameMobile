@@ -13,8 +13,48 @@ MonoBehaviour:
   m_Name: Menu Table Shared Data
   m_EditorClassIdentifier: 
   m_TableCollectionName: Menu Table
-  m_TableCollectionNameGuidString: 00000000000000000000000000000000
-  m_Entries: []
+  m_TableCollectionNameGuidString: 97774bf652dae384ba9c16466193a092
+  m_Entries:
+  - m_Id: 1048881922048
+    m_Key: start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1284652138496
+    m_Key: shed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1328927211520
+    m_Key: settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1225239822336
+    m_Key: rewards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1393192337408
+    m_Key: rewarded_ad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51514179584
+    m_Key: return
+    m_Metadata:
+      m_Items: []
+  - m_Id: 446445649920
+    m_Key: language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1364717207552
+    m_Key: exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1489686495232
+    m_Key: buy_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4582218137600
+    m_Key: main_menu
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

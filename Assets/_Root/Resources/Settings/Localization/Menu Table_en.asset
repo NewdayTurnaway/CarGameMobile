@@ -17,7 +17,47 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 97774bf652dae384ba9c16466193a092, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 51514179584
+    m_Localized: Return
+    m_Metadata:
+      m_Items: []
+  - m_Id: 446445649920
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1048881922048
+    m_Localized: Start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1284652138496
+    m_Localized: Shed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1328927211520
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1225239822336
+    m_Localized: Rewards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1393192337408
+    m_Localized: Rewarded Ad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1364717207552
+    m_Localized: Exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1489686495232
+    m_Localized: Buy Item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4582218137600
+    m_Localized: Main Menu
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
