@@ -12,7 +12,7 @@ namespace Features.AbilitySystem.Abilities
         float Value { get; }
     }
 
-    [CreateAssetMenu(fileName = nameof(AbilityItemConfig), menuName = "Configs/" + nameof(AbilityItemConfig))]
+    [CreateAssetMenu(fileName = nameof(AbilityItemConfig), menuName = Constants.Configs.MENU_PATH + nameof(AbilityItemConfig))]
     internal sealed class AbilityItemConfig : ScriptableObject, IAbilityItem
     {
         [SerializeField] private ItemConfig _itemConfig;

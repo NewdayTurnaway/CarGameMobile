@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game
 {
-    [CreateAssetMenu(fileName = nameof(GameConfig), menuName = "Configs/" + nameof(GameConfig))]
+    [CreateAssetMenu(fileName = nameof(GameConfig), menuName = Constants.Configs.MENU_PATH + nameof(GameConfig))]
     internal sealed class GameConfig : ScriptableObject
     {
         [field: SerializeField] public float SpeedCar { get; private set; }
